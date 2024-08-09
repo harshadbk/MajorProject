@@ -1,0 +1,56 @@
+import React from 'react';
+import './Navbar.css';
+
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <div className="navbar-logo">
+        <a href="/">AgroStore</a>
+      </div>
+      <ul className="navbar-links">
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="/products">Products</a>
+          <ul className="dropdown">
+            <li><a href="/products/fertilizers">Fertilizers</a></li>
+            <li><a href="/products/pesticides">Pesticides</a></li>
+            <li><a href="/products/herbicides">Herbicides</a></li>
+            <li><a href="/products/organic">Organic Products</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/categories">Categories</a>
+          <ul className="dropdown">
+            <li><a href="/categories/crop">By Crop</a></li>
+            <li><a href="/categories/type">By Type</a></li>
+          </ul>
+        </li>
+        <li><a href="/best-sellers">Best Sellers</a></li>
+        <li><a href="/offers">Offers</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+         <li>
+          <a href="/customer-service">Customer Service</a>
+          <ul className="dropdown">
+            <li><a href="/customer-service/shipping">Shipping & Delivery</a></li>
+            <li><a href="/customer-service/returns">Returns & Refunds</a></li>
+            <li><a href="/customer-service/privacy">Privacy Policy</a></li>
+            <li><a href="/customer-service/terms">Terms of Service</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/account">Account</a>
+          <ul className="dropdown">
+            <li><a href="/account/signin">Sign In</a></li>
+            <li><a href="/account/register">Register</a></li>
+            <li><a href="/account/orders">My Orders</a></li>
+          </ul>
+        </li>
+        <li><a href="/cart">Cart</a></li>
+        <li><a href="/search">Search</a></li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;

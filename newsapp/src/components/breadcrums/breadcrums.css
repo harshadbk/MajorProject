@@ -1,0 +1,29 @@
+/* Main breadcrumb container */
+.breadcrum {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    background-color: #f1f1f1; /* Light grey background */
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333; /* Dark text color */
+}
+
+/* Breadcrumb links */
+.breadcrum a {
+    text-decoration: none;
+    color: #007bff; /* Blue color for links */
+    transition: color 0.3s;
+}
+
+.breadcrum a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Arrow icons */
+.breadcrum img {
+    width: 12px;
+    height: 12px;
+}
