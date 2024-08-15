@@ -4,7 +4,7 @@ import './navbar2.css';
 
 const Navbar2 = () => {  
   const [menu, setMenu] = useState("Shop");
-  // const username = localStorage.getItem('user-name');
+  const username = localStorage.getItem('user-name');
   const role = localStorage.getItem('role');
  
 
@@ -27,10 +27,10 @@ const Navbar2 = () => {
           </li>
         ))}
       </ul>
-      {/* <div className="nav2-name">
+      <div className="nav2-name">
         {username && <p className="nav2-username"><h4>Hello, {username}</h4><hr /></p>}
         {role && <p className="nav2-role"><h3>&nbsp;&nbsp;&nbsp;Your Role is {role}</h3><hr /></p>}
-      </div> */}
+      </div>
     </div>
   );
 };
