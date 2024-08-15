@@ -12,12 +12,6 @@ import Unsubscribe from '../../assets/unsubscribe.jpg';
 const Sidebar = () => {
   return (
     <div className='sidebar'>
-      <Link style={{ textDecoration: 'none' }} to={'/Addproduct'}>
-        <div className="sidebar-item">
-          <img src={add_product_icon} alt="Add Product" />
-          <p>Add Products</p>
-        </div>
-      </Link>
       <Link style={{ textDecoration: 'none' }} to={'/Listproduct'}>
         <div className="sidebar-item">
           <img src={list_product_icon} alt="List Product" />

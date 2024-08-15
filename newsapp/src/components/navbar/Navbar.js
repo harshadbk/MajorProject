@@ -140,12 +140,15 @@ const Navbar = () => {
             localStorage.removeItem('auth-token');
             localStorage.removeItem('user-name');
             localStorage.removeItem('role');
+            localStorage.removeItem('address');
             window.location.replace('/');
           }}>Logout</button>
         ) : (
           <Link to='/loginsignup'><button className="nav-button">Login</button></Link>
         )}
-        <Link to='/cart'><img src={cartIcon} alt="Cart" className="nav-cart-icon" /></Link>
+        <Link to='/cart'>
+        <img src={cartIcon} alt="Cart" className="nav-cart-icon" />
+        </Link>
         <div className="nav-cart-count">{getTotalCartItem()}</div>
         {isAuthenticated ? (
           <Link to='/profile'>

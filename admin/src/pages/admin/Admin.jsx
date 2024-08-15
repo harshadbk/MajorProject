@@ -2,7 +2,6 @@ import React from 'react';
 import './admin.css';
 import Sidebar from '../../components/navbar/Sidebar';
 import { Routes, Route } from 'react-router-dom';
-import Addproducts from '../../components/addproduct/Addproduct';
 import Listproducts from '../../components/listproduct/Listproduct';
 import Adduser from '../../components/adduser/adduser';
 import ListUser from '../../components/listuser/listuser';
@@ -16,7 +15,6 @@ const Admin = () => {
       <Sidebar />
       <div className='content'>
         <Routes>
-          <Route path='/Addproduct' element={<Addproducts/>} />
           <Route path='/Listproduct' element={<Listproducts />} />
           <Route path='/adduser' element={<Adduser/>}/>
           <Route path='/listuser' element={<ListUser/>} />

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Hero.css';
-import hand2 from '../Assets/hand2.jpg';
 import arrow from '../Assets/arrow.jpg';
 import heroimg from '../Assets/heroimg.jpg';
 
@@ -9,16 +8,13 @@ const Hero = () => {
         <div className='hero'>
             <div className="hero-left">
                 <h2>
-                    NEW ARRIVAL ONLY
+                Empowering Farmers, Nurturing Growth
                 </h2>
-                <div>
+                    <div>
                     <div className="hero-hand-icon">
-                        <p>New</p>
-                        <img src={hand2} alt="Hand icon" />
                     </div>
-                    <p>Collection</p>
-                    <p>For Everyone</p>
-                </div>
+                    <p>we are committed to supporting farmers with the tools, resources, and community they need to thrive</p>
+                   </div>
                 <div className="hero-latest-button">
                     <button>
                         Latest Collection

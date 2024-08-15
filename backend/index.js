@@ -518,7 +518,7 @@ app.get('/peruser', fetchuser, async (req, res) => {
 
 // creating schema for farmer profile
 
-const farmer = mongoose.model('farmer', {
+const Farmers = mongoose.model('farmer', {
 
     email: {
         type: String,
@@ -536,7 +536,7 @@ const farmer = mongoose.model('farmer', {
     },
 
     area: {
-        type: Number,
+        type: String,
         require: true
     },
 
@@ -563,7 +563,7 @@ const farmer = mongoose.model('farmer', {
 
 // creating schema for worker profile
 
-const worker = mongoose.model('worker', {
+const Workers = mongoose.model('worker', {
 
     email: {
         type: String,
@@ -643,45 +643,45 @@ const merchant = mongoose.model('merchant', {
 
 // creating modules for shopkeeper
 
-const shopkeeper = mongoose.model('shopkeeper', {
+const shopkeepers = mongoose.model('shopkeeper', {
 
     email: {
         type: String,
         require: true
     },
 
-    ownera: {
+    ownaddress: {
         type: String,
         require: true
     },
 
-    shopa: {
+    shaddress: {
         type: String,
         require: true
     },
 
-    phone: {
+    phoneno: {
         type: Number,
         require: true
     },
 
-    shop_name: {
+    shname: {
         type: String,
         require: true
     },
 
-    shop_type: {
+    shtype: {
         type: String,
         require: true
     },
 
-    hours: {
+    ophours: {
         type: String,
         require: true
     },
 
     payment: {
-        type: Number,
+        type: String,
         require: true
     }
 
@@ -691,12 +691,12 @@ const shopkeeper = mongoose.model('shopkeeper', {
 
 app.post('/farmerd', async (req, res) => {
     try {
-        let check = await farmer.findOne({ email: req.body.email });
+        let check = await Farmers.findOne({ email: req.body.email });
 
         if (check) {
             return res.status(400).json({ success: false, errors: "You already Enter Your Basic Details" });
         }
-        const farmerdata = new farmer({
+        const farmerdata = new Farmers({
             email: req.body.email,
             address: req.body.address,
             phone: req.body.phone,
@@ -704,7 +704,7 @@ app.post('/farmerd', async (req, res) => {
             farm_type: req.body.farm_type,
             soil_type: req.body.soil_type,
             crop_grown: req.body.crop_grown,
-            fertilizers: req.body.crop_grown
+            fertilizers: req.body.fertilizers
         });
 
         await farmerdata.save();
@@ -724,8 +724,80 @@ app.post('/farmerd', async (req, res) => {
 
 // creating endpoint for fetching the farmers
 
+app.post('/perfarmer', async (req, res) => {
+    try {
+        const { email } = req.body;
+        if (!email) {
+            return res.status(400).send("Email is required");
+        }
 
+        let farmer = await Farmers.findOne({ email: email });
 
+        if (!farmer) {
+            return res.status(404).send("Farmer not found");
+        }
+
+        res.json(farmer);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// creating endpoint for storing shopkeepers information 
+
+app.post('/shopkeeperd', async (req, res) => {
+    try{
+        let check = await shopkeepers.findOne({email:req.body.email});
+        if(check){
+            return res.status(400).json({success:false,error:"You Already Enter Your Basic Details"});
+        }
+
+        const shopkeeperData = new shopkeepers({
+            email:req.body.email,
+            ownaddress:req.body.ownaddress,
+            shaddress:req.body.shaddress,
+            phoneno:req.body.phoneno,
+            shname:req.body.shname,
+            shtype:req.body.shtype,
+            ophours:req.body.ophours,
+            payment:req.body.payment
+        })
+
+        await shopkeeperData.save();
+
+        res.json({
+            success:true,
+            email:req.body.email
+        })
+
+        console.log("Profile adds successfully !!!", req.body.email);
+
+    }
+    catch(error){
+        res.json({success:false,error:error.message})
+    }
+})
+
+// creating endpoint for Fetching profile for ShopKeeper 
+
+app.post('/pershop',async (req,res)=>{
+    try{
+      const {email} = req.body;
+      if(!email){
+        return res.status(400).send("Email is Required ");
+      }
+      let Shopkeeper = await shopkeepers.findOne({email:email});
+      if(!Shopkeeper){
+        return res.status(404).send("farmer Not Found ");
+      }
+      res.json(Shopkeeper);
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).send("internal server Error");
+    }
+})
 
 // Start the server
 app.listen(port, (error) => {
@@ -733,6 +805,5 @@ app.listen(port, (error) => {
         console.log("Server Running on port " + port);
     } else {
         console.log("Error : " + error);
-        
     }
 });

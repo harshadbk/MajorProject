@@ -31,7 +31,7 @@ const LoginSignup = () => {
     if (response.success) {
       localStorage.setItem('auth-token', response.token);
       localStorage.setItem('user-name', formdata.email);
-      window.location.replace("/");
+      window.location.replace("/profile");
     } else {
       alert(response.errors);
     }
@@ -52,7 +52,7 @@ const LoginSignup = () => {
       .then((data) => response = data);
     if (response.success) {
       localStorage.setItem('auth-token', response.token);
-      window.location.replace("/");
+      window.location.replace("/profile");
     } else {
       alert(response.errors);
     }
@@ -104,8 +104,15 @@ const LoginSignup = () => {
             placeholder='Password'
           />
         </div>
-        <button onClick={() => { state === "Login" ? login() : signup() }}>Continue</button>
-        {state === "Sign Up" ? (
+        <button onClick={() => {
+          if (state === "Login") {
+            login();
+          } else {
+            signup();
+          }
+        }}>
+          Continue
+        </button>        {state === "Sign Up" ? (
           <p className="loginsignup-login">
             Already have an account? <span onClick={() => { setState("Login") }}>Login Here</span>
           </p>

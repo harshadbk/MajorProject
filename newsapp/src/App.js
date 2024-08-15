@@ -16,6 +16,10 @@ import SB from './components/Assets/sbt.avif';
 import Payment from './pages/payment';
 import CheckoutPage from './pages/checkout'; 
 import Profile from './pages/profile';
+import ShopKeeper from './pages/shopkeeper';
+import AddProduct from './pages/addproduct';
+import Pending from './myshopkeeper/pending/pending';
+import Complete from './myshopkeeper/complete/complete';
 
 function App() {
     return (
@@ -39,6 +43,10 @@ function App() {
                     <Route path='/checkout' element={<CheckoutPage />} />
                     <Route path='/payment' element={<Payment/>} />
                     <Route path='/profile' element={<Profile/>} />
+                    <Route path='/shopkeeper' element={<ShopKeeper/>} />
+                    <Route path='/addproduct' element={<AddProduct/>} />
+                    <Route path='/pending' element={<Pending/>} />
+                    <Route path='/complete' element={<Complete/>} />
                 </Routes>
                 <br/>
                 <br/>

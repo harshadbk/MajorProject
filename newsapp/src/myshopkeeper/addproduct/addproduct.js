@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './addproduct.css';
-import uploadFile from '../../assets/image_plus.jpg';
+import uploadFile from '../../components/Assets/image_plus.jpg';
 
 const AddProduct = () => {
   const [image, setImage] = useState(null);
@@ -8,6 +8,9 @@ const AddProduct = () => {
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
+    size:"",
+    tags:"",
+    description:"",
     category: "onion",
     new_price: "",
     old_price: ""
@@ -87,6 +90,18 @@ const AddProduct = () => {
             <option value="Herbicides">Herbicides</option>
             <option value="seed">Seeds</option>
           </select>
+        </div>
+        <div className="addproduct-itemfield">
+          <p>Available Size</p>
+          <input type="text" value={productDetails.size} onChange={changeHandler} name='size' placeholder='Enter Products Size' />
+        </div>
+        <div className="addproduct-itemfield">
+          <p>Tags</p>
+          <input type="text" value={productDetails.tags} onChange={changeHandler} name='tags' placeholder='Enter Tags'/>
+        </div>
+        <div className="addproduct-itemfield">
+          <p>Enter Full Product Description</p>
+          <textarea type="text" value={productDetails.description} onChange={changeHandler} name='description' placeholder='Enter Description For it' />
         </div>
         <div className="addproduct-itemfield">
           <p>Add Image</p>

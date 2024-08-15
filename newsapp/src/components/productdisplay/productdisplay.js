@@ -43,18 +43,14 @@ const ProductDisplay = (props) => {
             A fertilizer (American English) or fertiliser (British English) is any material of natural or synthetic origin that is applied to soil or to plant
           </div>
           <div className="productdisplay-right-size">
-            <h1>Select Size</h1>
+            <h1>Available Size</h1>
             <div className="productdisplay-right-size">
-              <div>S</div>
-              <div>M</div>
-              <div>L</div>
-              <div>XL</div>
-              <div>XXL</div>
+            {product.size}
             </div>
           </div>
           <button onClick={() => { addToCart(product.id) }}>ADD TO CART</button>
-          <p className='productdisplay-right-category'><span>Category :</span> Onion, Tomato, Grapes</p>
-          <p className='productdisplay-right-category'><span>Tags :</span> Modern, Latest</p>
+          <p className='productdisplay-right-category'><span>Category :</span> {product.category}</p>
+          <p className='productdisplay-right-category'><span>Tags :</span>{product.tags}</p>
         </div>
       </div>
     </div>
