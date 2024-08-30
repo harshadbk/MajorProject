@@ -6,6 +6,7 @@ const AddProduct = () => {
   const [image, setImage] = useState(null);
 
   const [productDetails, setProductDetails] = useState({
+    email:localStorage.getItem('user-name'),
     name: "",
     image: "",
     size:"",
@@ -84,9 +85,9 @@ const AddProduct = () => {
         <div className="addproduct-itemfield">
           <p>Product Category</p>
           <select value={productDetails.category} onChange={changeHandler} name="category" className='add-product-selector'>
-            <option value="onion">Fertilizers</option>
-            <option value="tomato">Pesticides</option>
-            <option value="graphes">Organic</option>
+            <option value="Fertilizers">Fertilizers</option>
+            <option value="Pesticides">Pesticides</option>
+            <option value="Organic">Organic</option>
             <option value="Herbicides">Herbicides</option>
             <option value="seed">Seeds</option>
           </select>

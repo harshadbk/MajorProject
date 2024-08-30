@@ -1,7 +1,10 @@
 import React from 'react'
 import './descriptionbox.css'
 
-const descriptionbox = () => {
+const descriptionbox = (props) => {
+
+  const { product } = props;
+
   return (
     <div className='descriptionbox'>
       <div className="descriptionbox-navigator">
@@ -13,10 +16,7 @@ const descriptionbox = () => {
         </div>
         <div className="descriptionbox-description">
           <p>
-          fertilizer, natural or artificial substance containing the chemical elements that improve growth and productiveness of plants. Fertilizers enhance the natural fertility of the soil or replace chemical elements taken from the soil by previous crops.
-          </p>
-          <p>
-          Fertilizers are substances that are added to soil or plants to provide essential nutrients that promote healthy growth. They come in various forms and compositions, each designed to address specific needs of different plants and soils. Here are some common types of fertilizers along with their descriptions:
+            {product.description || "This design ensures that all product images are consistently sized and provides a visually appealing, interactive experience for users. The combination of clean lines, smooth animations, and subtle effects should make the ProductDisplay component delightful to use."}
           </p>
         </div>
       </div>

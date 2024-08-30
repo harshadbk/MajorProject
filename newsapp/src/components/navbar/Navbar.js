@@ -69,17 +69,17 @@ const Navbar = () => {
           {menu === "Categories" && <><hr /></>}
           {showCategories && (
             <ul className="dropdown">
-              <li onClick={() => setMenu("Mens")}>
-                <Link style={{ textDecoration: 'none' }} to='/Mens'>Fertilizers</Link>
-                {menu === "Mens" && <><hr /></>}
+              <li onClick={() => setMenu("Fertilizers")}>
+                <Link style={{ textDecoration: 'none' }} to='/Fertilizers'>Fertilizers</Link>
+                {menu === "Fertilizers" && <><hr /></>}
               </li>
-              <li onClick={() => setMenu("Womens")}>
-                <Link style={{ textDecoration: 'none' }} to='/Womens'>Pesticides</Link>
-                {menu === "Womens" && <><hr /></>}
+              <li onClick={() => setMenu("Pesticides")}>
+                <Link style={{ textDecoration: 'none' }} to='/Pesticides'>Pesticides</Link>
+                {menu === "Pesticides" && <><hr /></>}
               </li>
-              <li onClick={() => setMenu("Kids")}>
-                <Link style={{ textDecoration: 'none' }} to='/Kids'>Organic</Link>
-                {menu === "Kids" && <><hr /></>}
+              <li onClick={() => setMenu("Organic")}>
+                <Link style={{ textDecoration: 'none' }} to='/Organic'>Organic</Link>
+                {menu === "Organic" && <><hr /></>}
               </li>
               <li onClick={() => setMenu("Herbicides")}>
                 <Link style={{ textDecoration: 'none' }} to='/Herbicides'>Herbicides</Link>
@@ -88,6 +88,10 @@ const Navbar = () => {
               <li onClick={() => setMenu("seed")}>
                 <Link style={{ textDecoration: 'none' }} to='/seed'>Seeds</Link>
                 {menu === "seed" && <><hr /></>}
+              </li>
+              <li onClick={() => setMenu("others")}>
+                <Link style={{ textDecoration: 'none' }} to='/others'>Others</Link>
+                {menu === "others" && <><hr /></>}
               </li>
             </ul>
           )}
@@ -158,6 +162,10 @@ const Navbar = () => {
           <img onClick={() => { alert("Please Login or Sign up To The System") }} src={Profile} alt="Profile" className='profile-img disabled' />
         )}
       </div>
+       {/* <div className="nav2-name">
+        {username && <p className="nav2-username"><h4>Hello, {username}</h4><hr /></p>}
+        {role && <p className="nav2-role"><h3>&nbsp;&nbsp;&nbsp;Your Role is {role}</h3><hr /></p>}
+      </div> */}
     </div>
   );
 };

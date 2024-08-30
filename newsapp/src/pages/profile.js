@@ -334,7 +334,12 @@ const Profile = () => {
                             <input type="text" name="payment" value={shinfo.payment} onChange={shopChangeHandler} />
                         </label>
                     </div>
-                    <button onClick={handleShSaveClick}>Save</button>
+                    <button onClick={() => {
+                        handleShSaveClick();
+                        window.location.replace('/profile');
+                    }}>
+                        Save
+                    </button>
                 </div>
             );
         }

@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import './complete.css';
 
-const Complete = () => {
+const Pending = () => {
   const [allOrders, setAllOrders] = useState([]);
   const [showCartIndex, setShowCartIndex] = useState(null);
 
   const fetchInfo = async () => {
-    await fetch('http://127.0.0.1:5000/complete')
+
+    await fetch('http://127.0.0.1:5000/scomplete', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: localStorage.getItem('user-name') })
+    })
       .then((resp) => resp.json())
-      .then((data) => { setAllOrders(data) });
+      .then((data) => setAllOrders(data));
   };
 
   useEffect(() => {
@@ -25,10 +33,9 @@ const Complete = () => {
     const seconds = String(d.getSeconds()).padStart(2, '0');
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
   };
-
   return (
     <div className='listpendingorders'>
-      <h1>All Complete Orders</h1>
+      <h1>All Pending Orders</h1>
       <br />
       <div className="listpendingorders-format-main">
         <p>Order Id</p>
@@ -58,10 +65,10 @@ const Complete = () => {
                   {order.cartdata.map((item, i) => (
                     <div key={i} className='cart-item'>
                       <span className='cart-item-title'>{item.name}</span>
-                       <br />
-                      <span className='cart-item-quantity'>Quantity:{item.quantity}</span>
                       <br />
-                      <span className='cart-item-price'>Price:{item.price}</span>
+                      <span className='cart-item-quantity'>Quantity: {item.quantity}</span>
+                      <br />
+                      <span className='cart-item-price'>Price: {item.price}</span>
                       <br />
                     </div>
                   ))}
@@ -76,4 +83,4 @@ const Complete = () => {
   );
 };
 
-export default Complete;
+export default Pending;

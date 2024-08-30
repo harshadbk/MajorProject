@@ -39,9 +39,9 @@ const Cartitems = () => {
                             <div className="cartitems-format">
                                 <img src={product.image} alt={product.name} className='carticon-product-icon' />
                                 <p>{product.name}</p>
-                                <p>${product.new_price}</p>
+                                <p>₹{product.new_price}</p>
                                 <button className='cartitems-quantity'>{quantity}</button>
-                                <p>${quantity * product.new_price}</p>
+                                <p>₹{quantity * product.new_price}</p>
                                 <img
                                     src={remove_icon}
                                     onClick={() => removeFromCart(product.id)}

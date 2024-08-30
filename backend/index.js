@@ -63,8 +63,12 @@ app.post("/upload", (req, res) => {
 
 // Schema for creating products
 const Product = mongoose.model("product", {
+    email:{ type: String, required: true },
     id: { type: Number, required: true },
     name: { type: String, required: true },
+    size: { type: String, required: true },
+    tags: { type: String, required: true },
+    description: { type: String, required: true },
     image: { type: String, required: true },
     category: { type: String, required: true },
     new_price: { type: Number, required: true },
@@ -87,7 +91,11 @@ app.post('/addproduct', async (req, res) => {
 
         const product = new Product({
             id: id,
+            email:req.body.email,
             name: req.body.name,
+            size: req.body.size,
+            tags: req.body.tags,
+            description: req.body.description,
             image: req.body.image,
             category: req.body.category,
             new_price: req.body.new_price,
@@ -421,21 +429,59 @@ app.post(('/addorder'), async (req, res) => {
     }
 })
 
-// creating endpoint for fetching the pending orders 
+// creating endpoint for fetching the pending orders
 
 app.get('/pending', async (req, res) => {
-    let orders = await Orders.find({ status: false });
+    let orders = await Orders.find({ status: false});
     console.log("All Pending Orders fetched ");
     res.send(orders);
 })
 
-// craeting endpoints for fetching the complete orders
+// creating endpoint for fetching te complete orders
 
 app.get('/complete', async (req, res) => {
     let orders = await Orders.find({ status: true });
     console.log("All Complete Orders fetched ");
     res.send(orders);
 })
+
+// creating endpoint for fetching the perticular shopkeeper orders
+
+app.post('/spending', async (req, res) => {
+    const { email } = req.body;
+
+    if (typeof email !== 'string' || !email.trim()) {
+        return res.status(400).json({ error: "Invalid email format." });
+    }
+
+    try {
+        let orders = await Orders.find({status:false,'cartdata.email': email });
+        console.log("Orders with specific email in cartdata fetched");
+        res.status(200).json(orders);
+    } catch (error) {
+        console.error("Error fetching orders:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// creating endpoint for fetching the perticular shopkeeper orders
+
+app.post('/scomplete', async (req, res) => {
+    const { email } = req.body;
+
+    if (typeof email !== 'string' || !email.trim()) {
+        return res.status(400).json({ error: "Invalid email format." });
+    }
+
+    try {
+        let orders = await Orders.find({ status:true,'cartdata.email': email });
+        console.log("Orders with specific email in cartdata fetched");
+        res.status(200).json(orders);
+    } catch (error) {
+        console.error("Error fetching orders:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 // craeting schema for subscribers
 
@@ -799,6 +845,54 @@ app.post('/pershop',async (req,res)=>{
     }
 })
 
+// creating api for getting all products for perticular shopkeeper
+
+app.post('/allsproducts',async (req,res)=>{
+
+      const {email} = req.body;
+      if(!email){
+        return res.status(400).send("Email is Required ");
+      }
+
+    let products = await Product.find({email:email});
+    console.log("Products Fetched for ", email);
+    res.send(products);
+})
+
+// creating Api for fetching the shopkeeper data for perticular product
+
+app.post('/shopkeeperdatas', async (req, res) => {
+    const { email } = req.body;
+    const {id} = req.body;
+    
+    if (!email) {
+        return res.status(400).send("Email is required.");
+    }
+    
+    try {
+        const data = await shopkeepers.findOne({ email: email });
+        
+        if (!data) {
+            return res.status(404).send("Shopkeeper not found.");
+        }
+        
+        console.log("Shopkeeper fetched for product Id: ", id);
+        res.send(data); 
+
+    } catch (error) {
+        console.error("Error fetching shopkeeper data: ", id);
+        res.status(500).send("Internal Server Error.");
+    }
+});
+
+// creating endpoint for related products 
+
+app.post('/related',async (req,res)=>{
+    console.log("Related product Fetching");
+    
+})
+
+
 // Start the server
 app.listen(port, (error) => {
     if (!error) {
@@ -807,3 +901,27 @@ app.listen(port, (error) => {
         console.log("Error : " + error);
     }
 });
+
+
+//https://texttospeech.googleapis.com/v1beta1/text:synthesize
+
+
+// {
+//     "audioConfig": {
+//       "audioEncoding": "LINEAR16",
+//       "effectsProfileId": [
+//         "small-bluetooth-speaker-class-device"
+//       ],
+//       "pitch": 0,
+//       "speakingRate": 1
+//     },
+//     "input": {
+//       "text": "Movies, oh my gosh, I just just absolutely love them. They're like time machines taking you to different worlds and landscapes, and um, and I just can't get enough of it."
+//     },
+//     "voice": {
+//       "languageCode": "en-US",
+//       "name": "en-US-Journey-F"
+//     }
+//   }
+
+//AIzaSyAC_wTntNWEbTG3iMOQ2Pr4wPVcznjxJNA

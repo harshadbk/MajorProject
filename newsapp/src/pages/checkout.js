@@ -14,6 +14,7 @@ const CheckoutPage = () => {
         }).map(product => ({
             id: product.id,
             name: product.name,
+            email:product.email,
             quantity: cartItem[product.id],
             price: product.new_price,
             image: product.image

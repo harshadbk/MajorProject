@@ -7,7 +7,14 @@ const ListProduct = () => {
   const [allproducts,setallproducts]=useState([]);
 
   const fetchinfo = async ()=>{
-    await fetch('http://127.0.0.1:5000/allproducts')
+    await fetch('http://127.0.0.1:5000/allsproducts',{
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: localStorage.getItem('user-name') })
+    })
     .then((resp)=>resp.json())
     .then((data)=>{setallproducts(data)});
   }

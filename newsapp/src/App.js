@@ -30,9 +30,9 @@ function App() {
 
                 <Routes>
                     <Route path='/' element={<Shop />} />
-                    <Route path='/Mens' element={<ShopCategory banner={p_1} category="onion" />} />
-                    <Route path='/Womens' element={<ShopCategory banner={p_15} category="tomato" />} />
-                    <Route path='/Kids' element={<ShopCategory banner={p_31} category="graphes" />} />
+                    <Route path='/Fertilizers' element={<ShopCategory banner={p_1} category="tomato" />} />
+                    <Route path='/Pesticides' element={<ShopCategory banner={p_15} category="onion" />} />
+                    <Route path='/Organic' element={<ShopCategory banner={p_31} category="graphes" />} />
                     <Route path='/Herbicides' element={<ShopCategory banner={HB} category="Herbicides" />} />
                     <Route path='/seed' element={<ShopCategory banner={SB} category="seed" />}/>
                     <Route path='/product' element={<Product />}>

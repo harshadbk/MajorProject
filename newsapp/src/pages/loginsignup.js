@@ -52,7 +52,9 @@ const LoginSignup = () => {
       .then((data) => response = data);
     if (response.success) {
       localStorage.setItem('auth-token', response.token);
-      window.location.replace("/profile");
+      localStorage.setItem('user-name',formdata.username);
+      // window.location.replace("/profile");
+      setState("Login")
     } else {
       alert(response.errors);
     }
