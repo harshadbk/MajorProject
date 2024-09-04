@@ -8,16 +8,13 @@ import { useSpeechSynthesis } from 'react-speech-kit';
 const ProductDisplay = ({ product }) => {
 
   const { speak , cancel } = useSpeechSynthesis();
-  const [text2,settext2] = useState('');
 
   const [shopkeeperDetails, setShopkeeperDetails] = useState({
     show: false,
     data: null,
   });
 
-  const handleOnClick2 = () =>{
-    speak({text:text2});
-  }
+ 
 
   const handleOnClick = () => {
     const name = product.name;
@@ -29,7 +26,7 @@ const ProductDisplay = ({ product }) => {
       ? product.description
       : "A fertilizer (American English) or fertiliser (British English) is any material of natural or synthetic origin that is applied to soil or to plant.";
       
-    speak({ text: "Product Name is "+ name + "New price is "+price+"Available size is"+ size + "Its Overall Decription is"+"Its category is"+category+descriptionText +"Thanks",lang: 'mr-IN' });
+    speak({ text: "Product Name is "+ name + "New price is "+price+"Available size is"+ size +"Its category is"+category+ "Its Overall Decription is"+descriptionText +"Thanks",lang: 'mr-IN' });
   };
 
   const { addToCart } = useContext(shopContext);
@@ -82,7 +79,8 @@ const ProductDisplay = ({ product }) => {
         <div className="productdisplay-right-star">
           {Array(4).fill(<img src={star_image} alt="star" />)}
           <img src={star_dull} alt="star dull" />
-          <p>(122)</p>
+          <p>(122)</p> <br /> <br />
+          <h1 className='productdisplay-right-category'><span>Product Id : </span>{product.id || "Latest"}</h1>
         </div>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-old">₹{product.old_price}</div>
@@ -101,6 +99,7 @@ const ProductDisplay = ({ product }) => {
           <p className='productdisplay-right-category'><span>Category :</span> {product.category}</p>
           <p className='productdisplay-right-category'><span>Tags :</span>{product.tags || "Latest"}</p>
         </div>
+        <h1 className='productdisplay-right-category'><span>Crop Name : </span>{product.crop_type ? product.crop_type: "NA" }</h1>
         <div className="productdisplay-right-shopkeeper">
           <button onClick={toggleShopkeeperDetails}>
             {shopkeeperDetails.show ? "Hide Shopkeeper Details" : "Show Shopkeeper Details"}
@@ -150,11 +149,6 @@ const ProductDisplay = ({ product }) => {
           <button className='buttonstyle' onClick={handleOnClick}>Listen Product Information</button>
           <br />
           <button className='buttonstyle' onClick={cancel}>Stop Playing</button>
-        </div>
-        <div>
-        {/* <textarea ClassName="textareastyle" id="textareastyle" onChange={(e)=>{settext2(e.target.value)}}>Enter info</textarea>
-          <br />
-          <button className='buttonstyle' onClick={()=>{handleOnClick2()}}>Listen</button> */}
         </div>
       </div>
     </div>

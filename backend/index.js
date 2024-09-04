@@ -66,10 +66,11 @@ const Product = mongoose.model("product", {
     email:{ type: String, required: true },
     id: { type: Number, required: true },
     name: { type: String, required: true },
+    image: { type: String, required: true },
     size: { type: String, required: true },
     tags: { type: String, required: true },
     description: { type: String, required: true },
-    image: { type: String, required: true },
+    crop_type: { type: String, required: true },
     category: { type: String, required: true },
     new_price: { type: Number, required: true },
     old_price: { type: Number, required: true },
@@ -98,6 +99,7 @@ app.post('/addproduct', async (req, res) => {
             description: req.body.description,
             image: req.body.image,
             category: req.body.category,
+            crop_type:req.body.crop_type,
             new_price: req.body.new_price,
             old_price: req.body.old_price,
         });
@@ -885,13 +887,15 @@ app.post('/shopkeeperdatas', async (req, res) => {
     }
 });
 
-// creating endpoint for related products 
+// fetching related farmers 
 
-app.post('/related',async (req,res)=>{
-    console.log("Related product Fetching");
-    
+app.get('/rfarmers',async (req,res)=>{
+
+    let rfarmers = await Farmers.find({});
+    console.log("Related Farmers Fetched ");
+    res.send(rfarmers);
+
 })
-
 
 // Start the server
 app.listen(port, (error) => {

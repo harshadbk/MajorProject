@@ -12,6 +12,7 @@ const AddProduct = () => {
     size:"",
     tags:"",
     description:"",
+    crop_type: "",
     category: "onion",
     new_price: "",
     old_price: ""
@@ -90,7 +91,13 @@ const AddProduct = () => {
             <option value="Organic">Organic</option>
             <option value="Herbicides">Herbicides</option>
             <option value="seed">Seeds</option>
+            <option value="others">Others</option>
+            <option value="stationary">Stationary</option>
           </select>
+        </div>
+        <div className='addproduct-itemfield'>
+          <p>Crop Name</p>
+          <input value={productDetails.crop_type} onChange={changeHandler} type="text" name='crop_type' placeholder='Type Here'/>
         </div>
         <div className="addproduct-itemfield">
           <p>Available Size</p>

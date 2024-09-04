@@ -96,9 +96,9 @@ const Navbar = () => {
             </ul>
           )}
         </li>
-        <li onClick={() => setMenu("Stationary")}>
-          <Link style={{ textDecoration: 'none' }} to='/Stationary'>Stationary</Link>
-          {menu === "Stationary" && <><hr /></>}
+        <li onClick={() => setMenu("stationary")}>
+          <Link style={{ textDecoration: 'none' }} to='/stationary'>Stationary</Link>
+          {menu === "stationary" && <><hr /></>}
         </li>
         <li onClick={() => setMenu("Bestseller")}>
           <Link style={{ textDecoration: 'none' }} to='/Bestseller'>Best Seller</Link>
