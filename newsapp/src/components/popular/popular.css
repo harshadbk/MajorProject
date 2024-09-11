@@ -24,3 +24,34 @@
     display: flex;
     gap:30px;
 }
+@media (max-width: 600px) {
+    /* Popular section container */
+    .popular {
+        height: auto; /* Allow height to adjust based on content */
+        padding: 20px; /* Add padding for better spacing */
+    }
+
+    /* Heading in popular section */
+    .popular h1 {
+        font-size: 32px; /* Smaller font size for heading */
+        text-align: center; /* Center align the heading */
+    }
+
+    /* Horizontal rule in popular section */
+    .popular hr {
+        width: 100px; /* Reduced width for smaller screens */
+        height: 4px; /* Smaller height */
+        margin: 10px auto; /* Center horizontally with margin */
+    }
+
+    /* Popular items container */
+    .popular-item {
+        flex-direction: column; /* Stack items vertically */
+        gap: 20px; /* Reduced gap between items */
+        margin-top: 20px; /* Adjusted margin for smaller screens */
+    }
+
+    .popular-item > * {
+        width: 100%; /* Full width for each item */
+    }
+}

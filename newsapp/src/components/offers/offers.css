@@ -67,3 +67,47 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 600px) {
+    /* Container for offers section */
+    .offers {
+        flex-direction: column; /* Stack items vertically */
+        padding: 20px; /* Reduced padding for smaller screens */
+    }
+
+    /* Left side of offers */
+    .offers-left {
+        padding: 0; /* Remove padding for the left section */
+        text-align: center; /* Center text alignment */
+        margin-bottom: 20px; /* Add margin at the bottom for spacing */
+    }
+
+    .offers-left h1 {
+        font-size: 32px; /* Smaller font size for heading */
+        text-shadow: none; /* Remove text shadow for cleaner look */
+    }
+
+    .offers-left p {
+        font-size: 18px; /* Smaller font size for paragraph */
+        margin: 10px 0; /* Adjust margin for better spacing */
+    }
+
+    .offers-left button {
+        width: 100%; /* Full width of container */
+        height: 45px; /* Slightly reduced height */
+        font-size: 16px; /* Smaller font size */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    /* Right side of offers */
+    .offers-right {
+        display: flex; /* Ensure flex display */
+        justify-content: center; /* Center content horizontally */
+        width: 100%; /* Full width for the right section */
+    }
+
+    .offers-right img {
+        width: 100%; /* Full width of container */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 250px; /* Limit height for better fitting */
+    }
+}

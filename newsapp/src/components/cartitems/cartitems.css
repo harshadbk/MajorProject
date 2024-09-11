@@ -161,3 +161,98 @@ hr {
     border: 0.5px solid #ccc;
     margin: 5px 0;
 }
+@media (max-width: 600px) {
+    /* Add padding to the body to prevent cutting off */
+    body {
+        padding: 0 15px; /* Add left and right padding */
+        box-sizing: border-box; /* Ensure padding doesn't affect total width */
+    }
+
+    /* Cart Items container */
+    .cartitems {
+        padding: 10px;
+        margin: 0 auto; /* Center the container */
+        width: 100%; /* Ensure full width */
+        box-sizing: border-box; /* Prevent overflow */
+    }
+
+    /* Adjust cart item grid to fewer columns */
+    .cartitems-format-main,
+    .cartitems-format {
+        grid-template-columns: 1fr 1.5fr 1fr 1fr; /* Reduce columns for better stacking */
+        gap: 5px;
+    }
+
+    /* Cart item images */
+    .cartitems-format img {
+        max-width: 40px; /* Smaller image size */
+        max-height: 40px;
+    }
+
+    /* Cart item quantity box */
+    .cartitems-quantity {
+        width: 35px;
+        height: 25px; /* Reduce size for smaller screens */
+    }
+
+    /* Cart items remove icon */
+    .cartitems-remove-icon {
+        width: 15px; /* Smaller remove icon */
+        height: 15px;
+    }
+
+    /* Adjust overall padding and font sizes */
+    .cartitems-down {
+        padding: 15px;
+        flex-direction: column; /* Stack the total and promo section */
+    }
+
+    .cartitems-total, .cartitems-promocode {
+        width: 100%; /* Full width for both sections */
+        padding: 10px 0; /* Add padding between them */
+        margin: 0; /* Remove margin for cleaner look */
+    }
+
+    .cartitems-total h1 {
+        font-size: 20px; /* Adjust heading size */
+    }
+
+    .cartitems-total-item p, 
+    .cartitems-total-item h3, 
+    .cartitems-promocode p {
+        font-size: 16px; /* Slightly smaller text */
+    }
+
+    /* Adjust promo code section */
+    .cartitems-promocode {
+        border-left: none; /* Remove left border */
+        margin-left: 0; /* Remove margin for stacking */
+    }
+
+    .cartiyems-promobox {
+        display: flex;
+        flex-direction: column; /* Stack the input and button */
+        width: 100%; /* Ensure full width for both elements */
+    }
+
+    .cartiyems-promobox input[type="text"],
+    .cartiyems-promobox button {
+        width: 100%; /* Full width for input and button */
+        padding: 10px; /* Same padding for both */
+        font-size: 16px; /* Same font size for both */
+        box-sizing: border-box; /* Prevent overflow */
+        margin-bottom: 10px; /* Space between input and button */
+    }
+
+    /* Remove margin from the last button */
+    .cartiyems-promobox button {
+        margin-bottom: 0;
+    }
+
+    /* General button adjustments */
+    button {
+        width: 100%; /* Full width for buttons */
+        padding: 10px; /* Same padding */
+        font-size: 16px; /* Same font size */
+    }
+}

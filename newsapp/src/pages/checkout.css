@@ -210,3 +210,89 @@ body {
         transform: translateX(0);
     }
 }
+@media (max-width: 600px) {
+    /* Checkout container */
+    .checkout {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 10px;
+        margin: 0 15px; /* Add space on left and right */
+    }
+
+    /* Checkout header */
+    .checkout-header-left h1 {
+        font-size: 1.5em;
+    }
+
+    /* Checkout details and payment info */
+    .checkout-details-left,
+    .checkout-paymentInfo-left {
+        max-width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        margin-left: 15px; /* Add left margin */
+        margin-right: 15px; /* Add right margin */
+    }
+
+    /* Move the right section below the left */
+    .checkout-amount-down {
+        order: 1; /* Ensure it comes after the details */
+        width: 100%; /* Full width on small screens */
+        margin-top: 20px;
+        padding: 15px;
+        margin-left: 15px; /* Add left margin */
+        margin-right: 15px; /* Add right margin */
+    }
+
+    /* Grid format for amounts and items */
+    .checkout-format-down,
+    .cartitems-format-down {
+        grid-template-columns: repeat(2, 1fr); /* Adjust grid to 2 columns */
+        font-size: 14px;
+    }
+
+    /* Cart item image */
+    .carticon-product-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Cart item quantity buttons */
+    .cartitems-quantity-down {
+        padding: 5px;
+    }
+
+    /* Checkout downside */
+    .checkout-downside {
+        max-width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        margin-left: 15px; /* Add left margin */
+        margin-right: 15px; /* Add right margin */
+    }
+
+    /* Submit button */
+    .submit-button,
+    .total {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Adjust animations for smaller screens */
+    @keyframes slideInFromLeft {
+        from {
+            transform: translateX(-50%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInFromRight {
+        from {
+            transform: translateX(50%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+}

@@ -99,3 +99,70 @@
     justify-content: center;
     display: flex;
 }
+@media (max-width: 600px) {
+    /* Hero section */
+    .hero {
+        height: auto; /* Allow height to adjust based on content */
+        padding: 0 10px; /* Reduced padding for smaller screens */
+        flex-direction: column; /* Stack left and right sections vertically */
+    }
+
+    /* Hero left section */
+    .hero-left {
+        padding-left: 0; /* Remove left padding */
+        text-align: center; /* Center align text */
+    }
+
+    .hero-left h2 {
+        font-size: 20px; /* Smaller font size */
+    }
+
+    .hero-left p {
+        font-size: 30px; /* Smaller font size */
+    }
+
+    /* Hero hand icon */
+    .hero-hand-icon {
+        flex-direction: column; /* Stack icons vertically */
+        align-items: center; /* Center align items */
+        margin: 10px 0; /* Reduced margin */
+    }
+
+    .hero-hand-icon img {
+        width: 30px; /* Smaller icon size */
+        height: 30px;
+    }
+
+    /* Hero latest button */
+    .hero-latest-button {
+        flex-direction: column; /* Stack button and image vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .hero-latest-button button {
+        width: 100%; /* Full width button */
+        max-width: 300px; /* Max width for the button */
+        height: 45px; /* Reduced height */
+        font-size: 18px; /* Smaller font size */
+    }
+
+    .hero-latest-button img {
+        width: 100%; /* Full width image */
+        max-width: 300px; /* Max width for the image */
+        height: auto; /* Auto height to maintain aspect ratio */
+        margin-top: 10px; /* Margin between button and image */
+    }
+
+    /* Hero right section */
+    .hero-right {
+        width: 100%; /* Full width */
+        padding: 10px 0; /* Padding for spacing */
+        justify-content: center; /* Center align content */
+    }
+
+    .hero-right img {
+        width: 100%; /* Full width image */
+        max-width: 400px; /* Max width for the image */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
