@@ -104,3 +104,42 @@
     font-size: 12px; /* Font size */
     color: #777; /* Gray text color */
 }
+@media (max-width: 600px) {
+    .loginsignup {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .loginsignup-container {
+        padding: 20px; /* Reduce padding to save space */
+        max-width: 100%; /* Remove max width for better fit */
+        box-shadow: none; /* Remove shadow to simplify design */
+    }
+
+    .loginsignup-container h1 {
+        font-size: 20px; /* Reduce font size */
+        margin-bottom: 15px; /* Reduce margin */
+    }
+
+    .loginsignup-fields {
+        gap: 10px; /* Decrease gap between fields */
+        margin-bottom: 15px; /* Reduce margin for fields */
+    }
+
+    .loginsignup-fields input {
+        font-size: 14px; /* Reduce input font size */
+        padding: 8px; /* Reduce input padding */
+    }
+
+    .loginsignup-container button {
+        font-size: 14px; /* Decrease button font size */
+        padding: 8px 15px; /* Reduce button padding */
+    }
+
+    .loginsignup-login {
+        font-size: 12px; /* Decrease font size for login link */
+    }
+
+    .loginsignup-agree p {
+        font-size: 10px; /* Smaller font for agreement text */
+    }
+}

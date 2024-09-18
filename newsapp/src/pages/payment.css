@@ -83,3 +83,56 @@
     background-color: #388e3c;
     transform: scale(1);
 }
+@media (max-width: 600px) {
+    /* Payment Page Container */
+    .payment-page {
+        padding: 15px;
+        max-width: 100%; /* Full width for smaller screens */
+        margin: 0 10px; /* Add slight margin for better appearance on small screens */
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: none; /* Simplify transitions for smaller screens */
+    }
+
+    .payment-page:hover {
+        background: #f9f9f9; /* Less intense hover effect on small screens */
+        transform: none;
+    }
+
+    /* Heading */
+    .payment-page h1 {
+        font-size: 20px; /* Smaller heading size */
+        margin-bottom: 15px; /* Less margin for smaller screens */
+    }
+
+    /* Form Group */
+    .payment-form .form-group {
+        margin-bottom: 12px; /* Less margin between form fields */
+    }
+
+    /* Input Fields */
+    .payment-form input {
+        padding: 7px; /* Adjust padding for smaller screens */
+    }
+
+    /* Total Amount */
+    .total-amount {
+        font-size: 16px; /* Smaller text for the total amount */
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    /* Pay Button */
+    .pay-button {
+        padding: 8px; /* Smaller button padding */
+        font-size: 14px; /* Smaller font size for the button */
+    }
+
+    .pay-button:hover {
+        transform: none; /* No scale effect on hover */
+    }
+
+    .pay-button:active {
+        transform: none;
+    }
+}

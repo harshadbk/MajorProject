@@ -200,3 +200,65 @@
   margin: 0;
   padding: 5px 0;
 }
+@media (max-width: 600px) {
+  .profile {
+      padding: 10px; /* Reduce padding for smaller screens */
+      border-radius: 5px; /* Slightly less rounded corners */
+  }
+
+  .profile-header {
+      text-align: center;
+  }
+
+  .profile-pic img {
+      width: 100px; /* Reduce profile image size */
+      height: 100px;
+      margin-bottom: 15px; /* Adjust spacing */
+  }
+
+  .profile-table {
+      padding: 15px; /* Reduce padding */
+      border-radius: 5px; /* Less rounded corners */
+      box-shadow: none; /* Remove shadow for simplicity */
+      margin: 15px 0; /* Adjust margin */
+      overflow-x: auto; /* Ensure proper scrolling if necessary */
+  }
+
+  .profile-table td {
+      font-size: 16px; /* Adjust font size for readability */
+      padding: 8px; /* Reduce padding */
+  }
+
+  .profile-add {
+      padding: 15px; /* Reduce padding */
+      border-radius: 5px; /* Less rounded corners */
+      box-shadow: none; /* Remove shadow */
+      margin: 15px 0; /* Adjust margin */
+  }
+
+  .profile-add th, 
+  .profile-add td {
+      font-size: 16px; /* Adjust font size */
+      padding: 8px 10px; /* Adjust padding */
+  }
+
+  .nav2-profile {
+      padding: 8px 16px; /* Reduce button padding */
+      font-size: 14px; /* Adjust font size */
+  }
+
+  .additional-info input {
+      padding: 8px; /* Reduce input padding */
+      margin-top: 3px; /* Adjust spacing */
+  }
+
+  .additional-info button {
+      padding: 8px; /* Adjust button padding */
+      font-size: 14px; /* Reduce font size */
+  }
+
+  .additional-info h2 {
+      font-size: 20px; /* Adjust heading size */
+      margin-bottom: 15px; /* Adjust margin */
+  }
+}

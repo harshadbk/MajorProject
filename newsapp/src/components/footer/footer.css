@@ -97,3 +97,58 @@
     font-size: 14px;
     color: #aaa; /* Light gray color for text */
 }
+@media (max-width: 600px) {
+    /* Container for the footer section */
+    .footer {
+        padding: 20px 10px; /* Reduced padding for small screens */
+        gap: 10px; /* Smaller gap between elements */
+    }
+
+    /* Footer logo container */
+    .footer-logo {
+        flex-direction: column; /* Stack logo and text vertically */
+        gap: 5px; /* Smaller gap between logo and text */
+    }
+
+    /* Footer logo image styling */
+    .footer-logo img {
+        width: 40px; /* Smaller logo on mobile */
+    }
+
+    /* Footer logo text styling */
+    .footer-logo p {
+        font-size: 20px; /* Smaller font size for logo text */
+    }
+
+    /* Footer links list */
+    .footer-links {
+        justify-content: center; /* Center-align links */
+        gap: 10px; /* Smaller gap between links */
+    }
+
+    /* Footer social icons container */
+    .footer-social-icons {
+        gap: 10px; /* Smaller gap between icons */
+    }
+
+    /* Footer icon container */
+    .footer-icon-container {
+        width: 30px; /* Smaller icon container */
+        height: 30px; /* Smaller icon container */
+    }
+
+    /* Footer social icon image */
+    .footer-icon-container img {
+        width: 15px; /* Smaller icon size */
+    }
+
+    /* Footer copyright section */
+    .footer-copyright {
+        font-size: 12px; /* Smaller font size for copyright text */
+    }
+
+    /* Horizontal line styling */
+    .footer-copyright hr {
+        margin: 10px 0; /* Less margin for spacing */
+    }
+}
