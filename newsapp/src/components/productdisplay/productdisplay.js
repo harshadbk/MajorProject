@@ -14,8 +14,6 @@ const ProductDisplay = ({ product }) => {
     data: null,
   });
 
- 
-
   const handleOnClick = () => {
     const name = product.name;
     const price = product.new_price;
