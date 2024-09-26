@@ -1,63 +1,78 @@
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
+
+function getDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c;
+  return distance;
+}
 
 function App() {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
-  const [userAddress, setUserAddres] = useState();
-  const [userCity, setUserCity] = useState();
-
-  //Get realtime gps of user
-  const [GPSLatitude, setGPSLatitude] = useState();
-  const [GPSLongitude, setGPSLongitude] = useState();
+  const [nearbyUsers, setNearbyUsers] = useState([]);
   const geo = navigator.geolocation;
 
-  //get User Current Location
-  geo.getCurrentPosition(userCoords);
+  const users = [
+    { name: "Mumbai", lat: 19.0760, lon: 72.8777 }, // Mumbai
+    { name: "Pune", lat: 18.5204, lon: 73.8567 }, // Nashik
+    { name: "Borivali", lat: 19.2183, lon: 72.9781 }, // Borivali (close to Mumbai)
+    { name: "Navi Mumbai", lat: 19.0330, lon: 73.0297 }, // Navi Mumbai
+    { name: "Nagpur", lat: 20.5937, lon: 78.9629 }, // (Nagpur)
+  ];
+
+
+  useEffect(() => {
+    geo.getCurrentPosition(userCoords);
+  }, []);
+
   function userCoords(position) {
-    let userLatitude = position.coords.latitude;
-    let userLongitude = position.coords.longitude;
-    // console.log("Latitude : ", userLatitude);
-    // console.log("Longitude : ", userLongitude);
+    const userLatitude = position.coords.latitude;
+    const userLongitude = position.coords.longitude;
     setLatitude(userLatitude);
     setLongitude(userLongitude);
+    findNearbyUsers(userLatitude, userLongitude);
   }
-  const getUserAddress = async () => {
-    let url = `https://api.opencagedata.com/geocode/v1/json?key=627c8f09c8f64c1aaa088b6a0b92284e&q=${latitude}%2C+${longitude}&pretty=1&no_annotations=1`;
-    const loc = await fetch(url);
-    const data = await loc.json();
-    // console.log("User Address : ", data);
-    setUserAddres(data.results[0].formatted);
-    setUserCity(data.results[0].components.city);
-  };
-  const handleGetUserAddress = async () => {
-    await getUserAddress();
-  };
 
-  //get User GPS Current Location
-  geo.watchPosition(userGPScoords);
-  function userGPScoords(position) {
-    let userGPSLatitude = position.coords.latitude;
-    let userGPSLongitude = position.coords.longitude;
-    console.log("Latitude : ", userGPSLatitude);
-    console.log("Longitude : ", userGPSLongitude);
-    setGPSLatitude(userGPSLatitude);
-    setGPSLongitude(userGPSLongitude);
+  
+  function findNearbyUsers(userLat, userLon) {
+    const maxDistance = 5; // 20 kilometers
+    const nearby = users.filter((user) => {
+      const distance = getDistance(userLat, userLon, user.lat, user.lon);
+      return distance <= maxDistance;
+    });
+    setNearbyUsers(nearby);
   }
+
   return (
-    <>
-      <h1>Current Location </h1>
-      <h2>Latitude- {latitude}</h2>
-      <h2>longitude- {longitude}</h2>
-      <h2>User Address - {userAddress}</h2>
-      <h2>City - {userCity}</h2>
-      <button onClick={handleGetUserAddress}>Get User Address</button>
-      <hr />
-      <h1>GPS Tracking</h1>
-      <h2>Latitude : - {GPSLatitude}</h2>
-      <h2>Latitude : - {GPSLongitude}</h2>
-    </>
+    <div className="App">
+      <h1>Your Current Location</h1>
+      <h2>Latitude: {latitude}</h2>
+      <h2>Longitude: {longitude}</h2>
+
+      <h1>Nearby Users (within 20 km)</h1>
+      {nearbyUsers.length > 0 ? (
+        nearbyUsers.map((user, index) => (
+          <div key={index}>
+            <h3>{user.name}</h3>
+            <p>
+              Latitude: {user.lat}, Longitude: {user.lon}
+            </p>
+          </div>
+        ))
+      ) : (
+        <p>No users found within 20 km range.</p>
+      )}
+    </div>
   );
 }
 
