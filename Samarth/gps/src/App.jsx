@@ -24,7 +24,7 @@ function App() {
 
   const users = [
     { name: "Mumbai", lat: 19.0760, lon: 72.8777 }, // Mumbai
-    { name: "Pune", lat: 18.5204, lon: 73.8567 }, // Nashik
+    { name: "Nashik", lat: 18.5204, lon: 73.8567 }, // Nashik
     { name: "Borivali", lat: 19.2183, lon: 72.9781 }, // Borivali (close to Mumbai)
     { name: "Navi Mumbai", lat: 19.0330, lon: 73.0297 }, // Navi Mumbai
     { name: "Nagpur", lat: 20.5937, lon: 78.9629 }, // (Nagpur)
@@ -43,7 +43,7 @@ function App() {
     findNearbyUsers(userLatitude, userLongitude);
   }
 
-  
+
   function findNearbyUsers(userLat, userLon) {
     const maxDistance = 5; // 20 kilometers
     const nearby = users.filter((user) => {

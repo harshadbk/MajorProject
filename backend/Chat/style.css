@@ -1,0 +1,95 @@
+body {
+    background-color: #f0f8ff; /* Light background color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #4caf50; /* Green color for heading */
+    margin: 20px 0;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    animation: fadeIn 1s ease-in;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    background-color: #ffffff; /* White background for chat area */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.send {
+    width: 100%;
+    max-width: 600px;
+}
+
+input[type="text"] {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #4caf50; /* Change border color on focus */
+    outline: none;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green button */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    animation: slideIn 0.5s forwards; /* Animation for messages */
+}
+
+.right {
+    background-color: #dcf8c6; /* Light green for user's messages */
+    align-self: flex-end;
+}
+
+.left {
+    background-color: #f1f0f0; /* Light gray for others' messages */
+    align-self: flex-start;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
