@@ -63,7 +63,7 @@ app.post("/upload", (req, res) => {
 
 // Schema for creating products
 const Product = mongoose.model("product", {
-    email:{ type: String, required: true },
+    email: { type: String, required: true },
     id: { type: Number, required: true },
     name: { type: String, required: true },
     image: { type: String, required: true },
@@ -92,14 +92,14 @@ app.post('/addproduct', async (req, res) => {
 
         const product = new Product({
             id: id,
-            email:req.body.email,
+            email: req.body.email,
             name: req.body.name,
             size: req.body.size,
             tags: req.body.tags,
             description: req.body.description,
             image: req.body.image,
             category: req.body.category,
-            crop_type:req.body.crop_type,
+            crop_type: req.body.crop_type,
             new_price: req.body.new_price,
             old_price: req.body.old_price,
         });
@@ -153,6 +153,12 @@ const Users = mongoose.model('user', {
     date: {
         type: Date,
         default: Date.now
+    },
+    latitude: {
+        type: Number,
+    },
+    longitude: {
+        type: Number
     }
 })
 
@@ -170,6 +176,8 @@ app.post('/adduser', async (req, res) => {
                 email: req.body.email,
                 password: req.body.password,
                 role: req.body.role,
+                latitude:req.body.latitude,
+                longitude:req.body.longitude
             });
             await user.save();
             res.json({
@@ -220,7 +228,9 @@ app.post('/signup', async (req, res) => {
         email: req.body.email,
         role: req.body.role,
         password: req.body.password,
-        cartdata: cart
+        latitude:req.body.latitude,
+        longitude:req.body.longitude,
+        cartdata: cart,
     });
 
     await user.save();
@@ -434,7 +444,7 @@ app.post(('/addorder'), async (req, res) => {
 // creating endpoint for fetching the pending orders
 
 app.get('/pending', async (req, res) => {
-    let orders = await Orders.find({ status: false});
+    let orders = await Orders.find({ status: false });
     console.log("All Pending Orders fetched ");
     res.send(orders);
 })
@@ -457,7 +467,7 @@ app.post('/spending', async (req, res) => {
     }
 
     try {
-        let orders = await Orders.find({status:false,'cartdata.email': email });
+        let orders = await Orders.find({ status: false, 'cartdata.email': email });
         console.log("Orders with specific email in cartdata fetched");
         res.status(200).json(orders);
     } catch (error) {
@@ -476,7 +486,7 @@ app.post('/scomplete', async (req, res) => {
     }
 
     try {
-        let orders = await Orders.find({ status:true,'cartdata.email': email });
+        let orders = await Orders.find({ status: true, 'cartdata.email': email });
         console.log("Orders with specific email in cartdata fetched");
         res.status(200).json(orders);
     } catch (error) {
@@ -795,53 +805,53 @@ app.post('/perfarmer', async (req, res) => {
 // creating endpoint for storing shopkeepers information 
 
 app.post('/shopkeeperd', async (req, res) => {
-    try{
-        let check = await shopkeepers.findOne({email:req.body.email});
-        if(check){
-            return res.status(400).json({success:false,error:"You Already Enter Your Basic Details"});
+    try {
+        let check = await shopkeepers.findOne({ email: req.body.email });
+        if (check) {
+            return res.status(400).json({ success: false, error: "You Already Enter Your Basic Details" });
         }
 
         const shopkeeperData = new shopkeepers({
-            email:req.body.email,
-            ownaddress:req.body.ownaddress,
-            shaddress:req.body.shaddress,
-            phoneno:req.body.phoneno,
-            shname:req.body.shname,
-            shtype:req.body.shtype,
-            ophours:req.body.ophours,
-            payment:req.body.payment
+            email: req.body.email,
+            ownaddress: req.body.ownaddress,
+            shaddress: req.body.shaddress,
+            phoneno: req.body.phoneno,
+            shname: req.body.shname,
+            shtype: req.body.shtype,
+            ophours: req.body.ophours,
+            payment: req.body.payment
         })
 
         await shopkeeperData.save();
 
         res.json({
-            success:true,
-            email:req.body.email
+            success: true,
+            email: req.body.email
         })
 
         console.log("Profile adds successfully !!!", req.body.email);
 
     }
-    catch(error){
-        res.json({success:false,error:error.message})
+    catch (error) {
+        res.json({ success: false, error: error.message })
     }
 })
 
 // creating endpoint for Fetching profile for ShopKeeper 
 
-app.post('/pershop',async (req,res)=>{
-    try{
-      const {email} = req.body;
-      if(!email){
-        return res.status(400).send("Email is Required ");
-      }
-      let Shopkeeper = await shopkeepers.findOne({email:email});
-      if(!Shopkeeper){
-        return res.status(404).send("farmer Not Found ");
-      }
-      res.json(Shopkeeper);
+app.post('/pershop', async (req, res) => {
+    try {
+        const { email } = req.body;
+        if (!email) {
+            return res.status(400).send("Email is Required ");
+        }
+        let Shopkeeper = await shopkeepers.findOne({ email: email });
+        if (!Shopkeeper) {
+            return res.status(404).send("farmer Not Found ");
+        }
+        res.json(Shopkeeper);
     }
-    catch(error){
+    catch (error) {
         console.error(error);
         res.status(500).send("internal server Error");
     }
@@ -849,14 +859,14 @@ app.post('/pershop',async (req,res)=>{
 
 // creating api for getting all products for perticular shopkeeper
 
-app.post('/allsproducts',async (req,res)=>{
+app.post('/allsproducts', async (req, res) => {
 
-      const {email} = req.body;
-      if(!email){
+    const { email } = req.body;
+    if (!email) {
         return res.status(400).send("Email is Required ");
-      }
+    }
 
-    let products = await Product.find({email:email});
+    let products = await Product.find({ email: email });
     console.log("Products Fetched for ", email);
     res.send(products);
 })
@@ -865,21 +875,21 @@ app.post('/allsproducts',async (req,res)=>{
 
 app.post('/shopkeeperdatas', async (req, res) => {
     const { email } = req.body;
-    const {id} = req.body;
-    
+    const { id } = req.body;
+
     if (!email) {
         return res.status(400).send("Email is required.");
     }
-    
+
     try {
         const data = await shopkeepers.findOne({ email: email });
-        
+
         if (!data) {
             return res.status(404).send("Shopkeeper not found.");
         }
-        
+
         console.log("Shopkeeper fetched for product Id: ", id);
-        res.send(data); 
+        res.send(data);
 
     } catch (error) {
         console.error("Error fetching shopkeeper data: ", id);
@@ -889,13 +899,27 @@ app.post('/shopkeeperdatas', async (req, res) => {
 
 // fetching related farmers 
 
-app.get('/rfarmers',async (req,res)=>{
+app.get('/rfarmers', async (req, res) => {
 
     let rfarmers = await Farmers.find({});
     console.log("Related Farmers Fetched ");
     res.send(rfarmers);
-
 })
+
+// fetching user those who is farmer
+
+app.get('/farmeruser', async (req, res) => {
+    try {
+        const users = await Users.find({ role: "Farmer" }); 
+        console.log("All Farmer users fetched:", users.length);
+        res.status(200).json(users);
+    } catch (error) {
+        console.error("Error fetching farmer users:", error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+});
+
+
 
 // Start the server
 app.listen(port, (error) => {
@@ -905,29 +929,3 @@ app.listen(port, (error) => {
         console.log("Error : " + error);
     }
 });
-
-
-//https://texttospeech.googleapis.com/v1beta1/text:synthesize
-
-
-// {
-//     "audioConfig": {
-//       "audioEncoding": "LINEAR16",
-//       "effectsProfileId": [
-//         "small-bluetooth-speaker-class-device"
-//       ],
-//       "pitch": 0,
-//       "speakingRate": 1
-//     },
-//     "input": {
-//       "text": "Movies, oh my gosh, I just just absolutely love them. They're like time machines taking you to different worlds and landscapes, and um, and I just can't get enough of it."
-//     },
-//     "voice": {
-//       "languageCode": "en-US",
-//       "name": "en-US-Journey-F"
-//     }
-//   }
-
-//AIzaSyAC_wTntNWEbTG3iMOQ2Pr4wPVcznjxJNA
-
-// newsapp-432911-a57930dba5c9.json

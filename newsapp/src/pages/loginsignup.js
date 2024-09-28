@@ -5,6 +5,8 @@ const LoginSignup = () => {
   const [state, setState] = useState("Login");
 
   const [formdata, setFormdata] = useState({
+    latitude: 0,
+    longitude: 0,
     username: "",
     role: "Admin",
     password: "",
@@ -13,6 +15,24 @@ const LoginSignup = () => {
 
   const changeHandler = (e) => {
     setFormdata({ ...formdata, [e.target.name]: e.target.value });
+  };
+
+  const getLocation = () => {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            resolve({ latitude, longitude });
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+      } else {
+        reject(new Error("Geolocation is not supported by this browser."));
+      }
+    });
   };
 
   const login = async () => {
@@ -39,24 +59,36 @@ const LoginSignup = () => {
 
   const signup = async () => {
     console.log("Sign up Function Executes ", formdata);
-    let response;
-    await fetch('http://127.0.0.1:5000/signup', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/form-data',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formdata),
-    })
-      .then((resp) => resp.json())
-      .then((data) => response = data);
-    if (response.success) {
-      localStorage.setItem('auth-token', response.token);
-      localStorage.setItem('user-name',formdata.username);
-      // window.location.replace("/profile");
-      setState("Login")
-    } else {
-      alert(response.errors);
+
+    try {
+      const { latitude, longitude } = await getLocation();
+      setFormdata(prevState => ({
+        ...prevState,
+        latitude,
+        longitude,
+      }));
+
+      let response;
+      await fetch('http://127.0.0.1:5000/signup', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/form-data',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...formdata, latitude, longitude }),
+      })
+        .then((resp) => resp.json())
+        .then((data) => response = data);
+      if (response.success) {
+        localStorage.setItem('auth-token', response.token);
+        localStorage.setItem('user-name', formdata.username);
+        // window.location.replace("/profile");
+        setState("Login");
+      } else {
+        alert(response.errors);
+      }
+    } catch (error) {
+      alert(`Error fetching location: ${error.message}`);
     }
   };
 
@@ -114,7 +146,8 @@ const LoginSignup = () => {
           }
         }}>
           Continue
-        </button>        {state === "Sign Up" ? (
+        </button>
+        {state === "Sign Up" ? (
           <p className="loginsignup-login">
             Already have an account? <span onClick={() => { setState("Login") }}>Login Here</span>
           </p>

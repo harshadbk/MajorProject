@@ -68,7 +68,7 @@ input[type="text"]:focus {
 }
 
 .message {
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
     animation: slideIn 0.5s forwards;

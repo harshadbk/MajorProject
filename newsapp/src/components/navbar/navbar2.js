@@ -8,7 +8,7 @@ const Navbar2 = () => {
   const username = localStorage.getItem('user-name');
 
   const menuItems = [
-    { role: 'Farmer', items: [{ name: 'Add Product', path: '/' }, { name: 'Merchants', path: '/' },{name:'Pending orders',path:'/'},{name:'Complete orders',path:'/'},{name:'Pending Products',path:'/'},{name:'Selled Products',path:'/'},{name:'Your Earning',path:'/'},{name:'Remote Workers',path:'/'},{name:'Community',path:'/'},{name:'Add Response',path:'/'}] },
+    { role: 'Farmer', items: [{ name: 'Add Product', path: '/' }, { name: 'Merchants', path: '/' },{name:'Pending orders',path:'/'},{name:'Complete orders',path:'/'},{name:'Pending Products',path:'/'},{name:'Selled Products',path:'/'},{name:'Your Earning',path:'/'},{name:'Remote Workers',path:'/'},{name:'Community',path:'/FCommunity'},{name:'Add Response',path:'/'}] },
     { role: 'Admin', items: [{ name: 'Deliveries', path: '/' }, { name: 'Pickup Points', path: '/' }] },
     { role: 'Worker', items: [{ name: 'Works Near Me', path: '/' }, { name: 'Works History', path: '/' }] },
     { role: 'Shopkeeper',items:[{name:'Add Product',path:'/addproduct'},{name:'List Product',path:'/shopkeeper'},{name:'Pending Orders',path:'/Pending'},{name:'Complete Orders',path:'/complete'},{name:'Your Earning',path:'/'},{name:'Delivery Boys',path:'/'},{name:'Remote Farmers',path:'/rfarmers'},{name:'Products Availability',path:'/'},{name:'Community',path:'/'},{name:'Farmers Feedback',path:'/'}]},

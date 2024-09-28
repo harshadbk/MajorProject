@@ -23,6 +23,7 @@ import AddProduct from './pages/addproduct';
 import Pending from './myshopkeeper/pending/pending';
 import Complete from './myshopkeeper/complete/complete';
 import Farmers from './myshopkeeper/rfarmers/Rfarmers';
+import FarmerCommunity from './Farmer/community/FCommunity';
 
 function App() {
     return (
@@ -53,6 +54,7 @@ function App() {
                     <Route path='/pending' element={<Pending/>} />
                     <Route path='/complete' element={<Complete/>} />
                     <Route path='/rfarmers' element={<Farmers/>} />
+                    <Route path='/FCommunity' element={<FarmerCommunity/>} />
                 </Routes>
                 <br/>
                 <br/>
