@@ -1,0 +1,13 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: auto;
+}
+
+.btn1, .btn2 {
+    height: 100px;
+    width: 100px;
+    margin: 0 10px;
+}
