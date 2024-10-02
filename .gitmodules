@@ -1,0 +1,3 @@
+[submodule "MajorProject/admin"]
+	path = MajorProject/admin
+	url = https://github.com/harshadbk/MajorProject.git
