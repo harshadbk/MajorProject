@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "create-react-app": "^5.0.1",
-    "myapp": "^0.0.0-1"
+    "myapp": "^0.0.0-1",
+    "build": "react-scripts build"
   }
 }
