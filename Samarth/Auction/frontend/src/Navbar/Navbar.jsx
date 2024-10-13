@@ -1,0 +1,60 @@
+import React, { Component } from "react";
+import "../app.css";
+
+class Navbar extends Component {
+  state = { clicked: false };
+
+  handleClick = () => {
+    this.setState({ clicked: !this.state.clicked }); // Fix toggle logic
+  };
+
+  render() {
+    return (
+      <nav>
+        <div>
+          {/* Use "navbar" and "active" classes properly */}
+          <ul
+            id="navbar"
+            className={this.state.clicked ? "navbar active" : "navbar"}
+          >
+            <li>
+              <a className="active" href="index.html">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="rest.html">Food</a> {/* Fix typo in href */}
+            </li>
+            <li>
+              <a href="#">Market</a> {/* Add href */}
+            </li>
+            <li>
+              <a href="quest.html">Question</a>
+            </li>
+            <li>
+              <a href="contact.html">Auction</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com">
+                <i className="fab fa-facebook"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="mobile" onClick={this.handleClick}>
+          <i
+            id="bar"
+            className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
+          ></i>
+        </div>
+      </nav>
+    );
+  }
+}
+
+export default Navbar;
