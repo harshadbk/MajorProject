@@ -11,7 +11,7 @@ const eleven = () => {
         "It always seems impossible until it’s done.",
         "Strive not to be a success, but rather to be of value.",
         "The only limit to our realization of tomorrow is our doubts of today.",
-        "The harder you work for something, the greater you’ll feel when you achieve it.",
+        "The harder you work for something, the greater you'll feel when you achieve it.",
         "Believe you can and you're halfway there."
     ]
 
